@@ -6,34 +6,34 @@ namespace Working_with_properties
     {
         static void Main(string[] args)
         {
-            Renderer renderer = new Renderer();
             Player player = new Player(25, 10, '@');
+            Renderer renderer = new Renderer();
 
-            renderer.Draw(player.PositionX, player.PositionY, player.Simbol);
+            renderer.Draw(player);
         }
     }
 
     class Player
     {
-        public int PositionX { get; private set; }
-        public int PositionY { get; private set; }
-        public char Simbol {  get; private set; }
-
         public Player(int positionX, int positionY, char simbol)
         {
             PositionX = positionX;
             PositionY = positionY;
             Simbol = simbol;
         }
+
+        public int PositionX { get; private set; }
+        public int PositionY { get; private set; }
+        public char Simbol { get; private set; }
     }
 
     class Renderer
     {
-        public void Draw(int x, int y, char simbol)
+        public void Draw(Player player)
         {
             Console.CursorVisible = false;
-            Console.SetCursorPosition(x, y);
-            Console.Write(simbol);
+            Console.SetCursorPosition(player.PositionX, player.PositionY);
+            Console.Write(player.Simbol);
             Console.ReadKey(true);
         }
     }
